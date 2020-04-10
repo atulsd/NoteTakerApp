@@ -17,8 +17,11 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var notes = [{ title: "Test Title", text: "Test text" }];
-
+var notes = [
+  { id: 1, title: "Test Title", text: "Test text" },
+  { id: 2, title: "Test Title", text: "Test text" },
+];
+let newNote;
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
@@ -40,10 +43,23 @@ app.get("/api/notes", function (req, res) {
   return res.json(notes);
 });
 
+app.delete("/api/notes/:id", function (req, res) {
+  var selected = req.params.id;
+  console.log("Server Id is: ", selected);
+  for (var i = 0; i < notes.length; i++) {
+    if (parseInt(selected) === notes[i].id) {
+      console.log("second if: ", i);
+      notes.splice(notes[i], 1);
+      return res.json(notes);
+    }
+  }
+  // return res.json(false);
+});
 // Create New Notes - takes in JSON input
 app.post("/api/notes", function (req, res) {
-  var newNote = req.body;
-  console.log("Recent one is:", newNote);
+  newNote = req.body;
+  console.log("Req. body is:", req.body);
+  newNote.id = ++notes.length;
   notes.push(newNote);
   console.log("Total is:", notes);
   res.json(newNote);
