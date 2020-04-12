@@ -1,17 +1,14 @@
 var express = require("express");
-var path = require("path");
+var app = express();
+var PORT = process.env.port || 3000;
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+var path = require("path");
 const fs = require("fs");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 const readFileAsync = util.promisify(fs.readFile);
-
-var app = express();
-var PORT = process.env.port || 3000;
-
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 module.exports = function (app) {
   app.get("/assets/css/styles.css", function (req, res) {
