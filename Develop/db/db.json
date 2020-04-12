@@ -10,13 +10,8 @@
     "id": 2
   },
   {
-    "title": "css",
+    "title": "CSS",
     "text": "Body and style of the web page.",
     "id": 3
-  },
-  {
-    "title": "Java Script",
-    "text": "It is used when a web page is to be made dynamic and add special effects on pages.",
-    "id": 4
   }
 ]
