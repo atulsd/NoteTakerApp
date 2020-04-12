@@ -54,7 +54,7 @@ This application is for writing, saving and deleting notes in the note taker.
 
 # Screenshots
 
-![employeeSummary.gif](./Develop/public/assets/images/NoteTaker.gif)
+![NoteTaker.gif](./Develop/public/assets/images/NoteTaker.gif)
 
 # References:
 
